@@ -1,0 +1,133 @@
+/* LoginView.css */
+.taust {
+    background-image: url('@/assets/images/loginview_background.jpg'); /* Asenda oma pildifaili nimega */
+    background-size: cover; /* Skaleeri pilt, et see kataks kogu lehe */
+    background-position: center; /* Joonda pilt keskele */
+    background-repeat: no-repeat; /* Ära korra pilti */
+    margin: 0; /* Eemalda marginaalid */
+    padding: 0; /* Eemalda paddingu */
+    height: 100vh; /* Veendu, et leht ulatub täiskõrgusel */
+}
+
+
+.login-container {
+
+    background-color: rgba(111, 165, 191, 0.89);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 50% 50% 0 0;
+    width: 100%;
+    max-width: 50% !important;
+    margin: 0 auto;
+    height: 600px; /* Määra kõrgus, et kuju oleks korrapärane ovaal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Joonda sisu allapoole */
+    /*transform: translateY(1%); !* Nihuta konteinerit alla *!*/
+    /*align-items: center; !* Joonda sisu horisontaalselt keskele *!*/
+    position: fixed; /* Fikseeri konteiner */
+    bottom: 0; /* Aseta konteiner ekraani alla */
+    left: 25%; /* Alusta vasakust äärest */
+    text-align: center; /* Joonda sisu keskele */
+}
+
+/*.content {
+    !*position: fixed;
+    bottom: 0; !* Aseta sisu allapoole *!
+    width: 100%;*!
+    text-align: center; !* Joonda tekst keskele *!
+    margin-bottom: 20px; !* Lisa veidi ruumi all *!
+}*/
+
+
+.jersey-25-regular {
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.login-container h1 {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #1a426e;
+}
+
+.login-container h3 {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1a426e;
+}
+
+.login-container .btn-light {
+    font-family: "Jersey 25", sans-serif;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    color: #1a426e;
+}
+
+.login-container .btn-light:hover {
+    background-color: #bcdff4; /* Kerge sinine taust hover korral */
+    border-radius: 4px; /* Ümarad nurgad */
+    padding: 0; /* Lisab veidi paddingu hover korral */
+    color: #1a426e;
+}
+
+.login-container .input-group {
+    margin-bottom: 15px;
+
+}
+
+.input-group-text {
+    min-width: 140px; /* Määra "Kasutajanimi" ja "Parool" laius */
+    justify-content: center; /* Joonda tekst keskele */
+}
+
+.form-control {
+    flex-grow: 1; /* Lase sisestusväljal kasutada kogu saadaolevat ruumi */
+}
+
+.login-container .input-group-text {
+    background-color: #1a426e;
+    color: #abe8ff;
+    font-family: "Jersey 25", sans-serif;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.login-container .form-control {
+    background-color: #ffffff;
+    color: #27304c;
+
+    border: none;
+}
+
+.register-link {
+    color: #27304c; /* Roheline värv */
+    text-decoration: underline; /* Eemalda alljoon */
+    font-size: 1.2rem; /* Suurenda fondi suurust */
+    margin-left: 2px; /* Lisa vasakul veidi ruumi */
+}
+
+.register-link:hover {
+    color: #bcdff4; /* Tumem roheline hover korral */
+    text-decoration: underline; /* Lisa alljoon hover korral */
+}
+
+.login-container .btn-success {
+    background-color: #8cd390;
+    font-family: "Jersey 25", sans-serif;
+    color: #27304c;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.login-container .btn-success:hover {
+    background-color: #218838;
+}

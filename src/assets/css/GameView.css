@@ -1,0 +1,43 @@
+.img-container {
+    max-width: 600px !important;
+    max-height: 400px !important;
+    margin: 20px auto 0 !important;
+    border: 5px solid rgb(153, 189, 201) !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+}
+
+.img-container img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: contain !important;
+    margin-top: 0 !important;
+
+}
+
+#timer {
+    font-family: "Jersey 25", sans-serif !important;
+    font-size: 1.5rem !important;
+    color: #1a426e !important;
+    margin-top: 70px;
+   /* padding: 10px 20px !important;*/
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+    display: inline-block !important;
+}
+#modal-timer {
+    font-family: "Jersey 25", sans-serif !important;
+    font-size: 1.5rem !important;
+    color: #1a426e !important;
+    margin-top: 0;
+   /* padding: 10px 20px !important;*/
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+    display: inline-block !important;
+}
+
+.button-container {
+    margin-top: 50px !important;
+}
+

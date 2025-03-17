@@ -1,0 +1,200 @@
+/* global.css */
+
+body {
+    position: relative; /* Vajalik pseudoelemendi jaoks */
+    color: rgba(173, 219, 246, 0.92) !important;
+    margin: 0; /* Eemalda marginaalid */
+    padding: 0; /* Eemalda paddingu */
+    min-height: 100vh; /* Veendu, et leht ulatub täiskõrgusel */
+    width: 219vh;
+    /*overflow: hidden; !* Keela kerimine, kui sisu ei mahu ekraanile *!*/
+    overflow-x: hidden;
+}
+
+body::before {
+    content: ''; /* Vajalik pseudoelemendi jaoks */
+    background-image: url('@/assets/images/loginview_background.jpg'); /* Lisa taustapilt */
+    background-size: cover; /* Skaleeri pilt, et see kataks kogu lehe */
+    background-position: center; /* Joonda pilt keskele */
+    background-repeat: no-repeat; /* Ära korra pilti */
+    background-attachment: fixed; /* Fikseeri taustapilt */
+    position: fixed; /* Aseta pilt lehe taha */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Aseta pilt lehe taha */
+}
+
+body::after {
+    content: ''; /* Vajalik pseudoelemendi jaoks */
+    background-color: rgba(152, 194, 218, 0.9); /* Lisa värvifilter pildi peale */
+    position: absolute; /* Aseta värvifilter pildi peale */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Aseta värvifilter pildi peale */
+}
+
+.jersey-25-regular {
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+h3 {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1a426e;
+}
+
+h5 {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 2.2rem !important;
+    margin-bottom: 20px;
+    color: #1a426e !important;
+}
+
+p {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 1.5rem !important; /* Tavaline suurus lõigule */
+    line-height: 1.6rem; /* Reavahe loetavuse parandamiseks */
+    margin-bottom: 20px; /* Alumine marginaal lõikude vahele */
+    color: #27304c !important; /* Sinu valitud värv */
+
+}
+h1 {
+    font-family: "Jersey 25", sans-serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #1a426e;
+}
+
+/*
+.btn-light {
+    font-family: "Jersey 25", sans-serif;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    color: #1a426e;
+}
+
+.btn-light:hover {
+    background-color: #bcdff4; !* Kerge sinine taust hover korral *!
+    border-radius: 4px; !* Ümarad nurgad *!
+    padding: 0; !* Lisab veidi paddingu hover korral *!
+    color: #1a426e;
+}
+
+.input-group {
+    margin-bottom: 15px;
+
+}
+
+.input-group-text {
+    min-width: 140px; !* Määra "Kasutajanimi" ja "Parool" laius *!
+    justify-content: center; !* Joonda tekst keskele *!
+}
+
+.form-control {
+    flex-grow: 1; !* Lase sisestusväljal kasutada kogu saadaolevat ruumi *!
+}
+
+.input-group-text {
+    background-color: #1a426e;
+    color: #abe8ff;
+    font-family: "Jersey 25", sans-serif;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.form-control {
+    background-color: #ffffff;
+    color: #27304c;
+
+    border: none;
+}
+
+.btn-success {
+    background-color: #8cd390;
+    font-family: "Jersey 25", sans-serif;
+    color: #27304c;
+    border: none;
+    font-size: 1.5rem;
+}*/
+
+.btn-light {
+    font-family: "Jersey 25", sans-serif !important;
+    margin-bottom: 20px !important;
+    font-size: 1.5rem !important;
+    background: none !important;
+    border: none !important;
+    text-decoration: underline !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    color: #1a426e !important;
+
+}
+
+.btn-light:hover {
+    background-color: #bcdff4 !important; /* Kerge sinine taust hover korral */
+/*    border-radius: 4px !important; !* Ümarad nurgad *!
+    padding: 0 !important; !* Lisab veidi paddingu hover korral *!*/
+    color: #1a426e !important;
+}
+
+.input-group {
+    margin-bottom: 15px !important;
+}
+
+.input-group-text {
+    min-width: 140px !important; /* Määra "Kasutajanimi" ja "Parool" laius */
+    justify-content: center !important; /* Joonda tekst keskele */
+}
+
+.form-control {
+    flex-grow: 1 !important; /* Lase sisestusväljal kasutada kogu saadaolevat ruumi */
+}
+
+.input-group-text {
+    background-color: #1a426e !important;
+    color: #abe8ff !important;
+    font-family: "Jersey 25", sans-serif !important;
+    border: none !important;
+    font-size: 1.5rem !important;
+}
+
+.form-control {
+    background-color: #ffffff !important;
+    color: #27304c !important;
+    border: none !important;
+}
+
+.btn-success {
+    background-color: #8cd390 !important;
+    font-family: "Jersey 25", sans-serif !important;
+    color: #27304c !important;
+    border: none !important;
+    font-size: 1.5rem !important;
+
+}
+
+.btn-success:hover {
+    background-color: #57ef5b !important; /* Kerge sinine taust hover korral */
+
+}
+
+.btn-secondary {
+    background-color: #97b6c4 !important;
+    color: #27304c !important;
+    font-family: "Jersey 25", sans-serif !important;
+    font-size: 1.2rem !important;
+    cursor: pointer !important;
+    border-width: 2px !important;
+    border-color: #27304c !important;
+}

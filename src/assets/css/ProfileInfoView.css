@@ -1,0 +1,74 @@
+
+/*
+    !* Üldine stiil *!
+.container {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 30px; !* Tühik pealkirja ja tabeli vahel *!
+    color: #2a752e; !* Tume roheline tekst *!
+
+}
+
+!* Tabeli stiil *!
+.table {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 30px; !* Tühik tabeli ja järgmiste elementide vahel *!
+}
+
+.table th, .table td {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px; !* Polster tabeli lahtrites *!
+}
+
+!* Pildi stiil *!
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; !* Ümardatud nurgad piltidel *!
+}
+
+!* Nuppude stiil *!
+.btn-warning {
+    background-color: #ffc107; !* Kollane taust *!
+    border-color: #ffc107;
+    color: #000; !* Must tekst *!
+    margin-top: 10px; !* Tühik nupu ja ülemise elemendi vahel *!
+}
+
+.btn-success {
+    background-color: #28a745; !* Roheline taust *!
+    border-color: #28a745;
+    color: #fff; !* Valge tekst *!
+    margin-top: 20px; !* Tühik nupu ja ülemise elemendi vahel *!
+    padding: 10px 20px; !* Suurem polster *!
+}
+
+!* Dropdowni stiil *!
+.col-6 {
+    margin-bottom: 20px; !* Tühik dropdowni ja nupu vahel *!
+}
+
+!* Alerti stiil *!
+.alert-success {
+    background-color: #d4edda; !* Hele roheline taust *!
+    border-color: #c3e6cb;
+    color: #155724; !* Tume roheline tekst *!
+    padding: 10px;
+    margin-bottom: 20px; !* Tühik alerti ja järgmiste elementide vahel *!
+    border-radius: 4px; !* Ümardatud nurgad *!
+}
+
+!* Ikoonide stiil *!
+.cursor-pointer {
+    cursor: pointer;
+    color: #dc3545; !* Punane värv kustutamise ikoonile *!
+}
+
+!* Veel ruumi elementide vahel *!
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+*/

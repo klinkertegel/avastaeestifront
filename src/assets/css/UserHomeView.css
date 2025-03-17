@@ -1,0 +1,75 @@
+/* Kaartide üldine stiil */
+.card {
+    background-color: #6fa5bf !important; /* Valge taust */
+    border: 1px solid #e0e0e0; /* Hele hall piirjoon */
+    border-radius: 10px; /* Ümarad nurgad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Varju efekt */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Sujuv animatsioon */
+    margin-bottom: 20px; /* Ruum kaartide vahel */
+}
+
+/*.card:hover {
+    transform: translateY(-5px); !* Kerge tõstmine hover korral *!
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); !* Suurem varju hover korral *!
+}*/
+
+/*.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; !* Kogu lehe kõrgus *!
+}*/
+
+/* Kaardi sisu stiil */
+.card-body {
+    padding: 20px; /* Sisemine padding */
+    text-align: center; /* Teksti joondamine keskele */
+}
+
+/* Pealkirja stiil */
+.card-title {
+    font-size: 1.5rem; /* Suurem fondi suurus */
+    font-weight: bold; /* Rasvane tekst */
+    color: #1a426e; /* Tumesinine värv */
+    margin-bottom: 15px; /* Ruum pealkirja ja teksti vahel */
+}
+
+/* Teksti stiil */
+.card-text {
+    font-size: 1rem; /* Tavaline fondi suurus */
+    color: #333333; /* Tume hall tekst */
+    margin-bottom: 20px; /* Ruum teksti ja nupu vahel */
+}
+
+/* Nuppude stiil */
+.btn-primary {
+    background-color: rgb(39, 48, 76) !important; /* Tumesinine taust */
+    color: #afd1ec !important; /* Valge tekst */
+    border: none; /* Eemalda piirjoon */
+    border-radius: 5px; /* Ümarad nurgad */
+    padding: 10px 20px; /* Padding */
+    font-size: 1.5rem !important; /* Fondi suurus */
+    cursor: pointer; /* Kursor muutub pointeriks */
+    transition: background-color 0.3s ease; /* Sujuv animatsioon */
+    font-family: "Jersey 25", sans-serif !important;
+}
+
+.btn-primary:hover {
+    background-color: #0d6efd; /* Hele sinine hover korral */
+    transform: translateY(3px); /* Kerge tõstmine hover korral */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Suurem varju hover korral */
+}
+
+/* Ridade ja veergude stiil */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -50px; /* Kompenseerib kaartide vahelise ruumi */
+}
+
+.col-sm-6 {
+    padding: 10px; /* Ruum kaartide vahel */
+    flex: 0 0 50%; /* Kaardid jagunevad kaheks veeruks */
+    max-width: 50%; /* Maksimaalne laius */
+}
+

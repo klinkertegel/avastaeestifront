@@ -1,0 +1,43 @@
+/* Tabeli üldine stiil */
+.table {
+    width: 100%; /* Tabel laius */
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Läbipaistev taust */
+    border-collapse: collapse; /* Eemalda lahtrite vaheline tühik */
+    margin-bottom: 20px; /* Marginaal allpool */
+}
+
+/* Tabeli päise stiil */
+.table th {
+    background-color: rgba(26, 66, 110, 0.8) !important; /* Tumeroheline taust */
+    color: #aed0eb !important; /* Hele sinine tekst */
+    font-family: "Jersey 25", sans-serif !important; /* Kasutaja valitud font */
+    font-size: 1.5rem !important; /* Teksti suurus */
+    padding: 15px; /* Paddingu suurus */
+    /*border: 1px solid rgba(255, 255, 255, 0.3) !important; !* Piirjoon *!*/
+}
+
+/* Tabeli lahtrite stiil */
+.table td {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Läbipaistev taust */
+    color: #27304c !important; /* Tumeroheline tekst */
+    font-family: "Jersey 25", sans-serif !important; /* Kasutaja valitud font */
+    font-size: 1.4rem !important; /* Teksti suurus */
+    padding: 15px; /* Paddingu suurus */
+  /*  border: 1px solid rgba(255, 255, 255, 0.3) !important; !* Piirjoon *!*/
+}
+
+/* Hover efekt tabeli ridadele */
+.table tbody tr:hover {
+    background-color: rgba(173, 219, 246, 0.3) !important; /* Hele sinine hover efekt */
+}
+
+/* Play ikooni stiil */
+.cursor-pointer {
+    cursor: pointer; /* Muuda kursorit klikitavaks */
+    color: #1a426e !important; /* Tumeroheline värv */
+    transition: color 0.3s ease; /* Sujuv värvimuutus */
+}
+
+.cursor-pointer:hover {
+    color: #57ef5b !important; /* Roheline hover efekti jaoks */
+}
