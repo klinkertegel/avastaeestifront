@@ -6,7 +6,7 @@ body {
     margin: 0; /* Eemalda marginaalid */
     padding: 0; /* Eemalda paddingu */
     min-height: 100vh; /* Veendu, et leht ulatub täiskõrgusel */
-    width: 219vh;
+    width: 100%;
     /*overflow: hidden; !* Keela kerimine, kui sisu ei mahu ekraanile *!*/
     overflow-x: hidden;
 }
