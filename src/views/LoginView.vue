@@ -1,8 +1,8 @@
 <template>
 <div class="taust">
   <InstructionsModal :modal-is-open="modalIsOpen"
-                     @event-close-modal="closeModal
-"/>
+                     @event-close-modal="closeModal"
+  />
   <div class="container text-center login-container col col-6">
     <div class="row justify-content-center mb-5">
       <div class="col col-12">
@@ -40,29 +40,21 @@
 import '@/assets/css/LoginView.css'
 import LoginService from "@/service/LoginService";
 import NavigationService from "@/service/NavigationService";
-import HttpStatusCodes from "@/errors/HttpStatusCodes";
-import BusinessErrors from "@/errors/BusinessErrors";
+import ErrorHandlingService from "@/errors/ErrorHandlingService";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 import InstructionsModal from "@/components/modal/InstructionsModal.vue";
 
 export default {
   name: 'LoginView',
   components: {InstructionsModal, AlertDanger},
+  
   data() {
     return {
-      showPassword: '',
-      modalIsOpen: false,
       username: '',
       password: '',
       errorMessage: '',
-      loginResponse: {
-        userId: 0,
-        roleName: ''
-      },
-      errorResponse: {
-        message: '',
-        errorCode: 0
-      }
+      showPassword: false,
+      modalIsOpen: false
     }
   },
 
@@ -77,69 +69,53 @@ export default {
       setTimeout(() => this.showPassword = false, 2000)
     },
 
-    sendLoginRequest() {
-      LoginService.sendLoginRequest(this.username, this.password)
-          .then(response => this.handleLoginResponse(response))
-          .catch(error => this.handleLoginErrorResponse(error))
+    async sendLoginRequest() {
+      return await LoginService.sendLoginRequest(this.username, this.password)
     },
 
-    handleLoginResponse(response) {
-      this.loginResponse = response.data;
-      sessionStorage.setItem('userId', this.loginResponse.userId)
-      sessionStorage.setItem('roleName', this.loginResponse.roleName)
+    async handleLoginResponse(response) {
+      const data = response.data;
+      sessionStorage.setItem('userId', data.userId)
+      sessionStorage.setItem('roleName', data.roleName)
       this.$emit('event-update-nav-menu')
-      if (this.loginResponse.roleName === 'admin') {
+      if (data.roleName === 'admin') {
         NavigationService.navigateToAdminHomeView()
       } else {
         NavigationService.navigateToUserHomeView()
       }
     },
 
-    handleLoginErrorResponse(error) {
-      this.errorResponse = error.response.data
-      const httpStatusCode = error.response.status
-
-      if (this.isIncorrectCredentials(httpStatusCode)) {
-        this.handleIncorrectCredentials();
-      } else {
-        NavigationService.navigateToErrorView()
-      }
-    },
-
-    isIncorrectCredentials(httpStatusCode) {
-      return HttpStatusCodes.STATUS_FORBIDDEN === httpStatusCode
-          && BusinessErrors.CODE_INCORRECT_CREDENTIALS === this.errorResponse.errorCode;
-    },
-
-    handleIncorrectCredentials() {
-      this.errorMessage = this.errorResponse.message;
-      setTimeout(this.resetAlertMessage, 4000);
+    async handleLoginErrorResponse(error) {
+      this.errorMessage = ErrorHandlingService.handleError(error);
     },
 
     resetAlertMessage() {
-      this.errorMessage = ''
+      this.errorMessage = '';
     },
 
-    login() {
-      if (this.username.length > 0 && this.password.length > 0) {
-        this.sendLoginRequest();
-      } else {
-        this.alertMissingFields();
+    async login() {
+      this.resetAllMessages();
+      
+      if (!this.username || !this.password) {
+        this.errorMessage = 'Palun täida kõik väljad';
+        return;
+      }
+
+      try {
+        const response = await this.sendLoginRequest();
+        await this.handleLoginResponse(response);
+      } catch (error) {
+        await this.handleLoginErrorResponse(error);
       }
     },
 
-    alertMissingFields() {
-      this.errorMessage = 'Kontrolli andmeid'
-      setTimeout(this.resetAllMessages, 4000)
+    resetAllMessages() {
+      this.resetAlertMessage();
     },
 
-    resetAllMessages() {
-      this.errorMessage = ''
-    },
     closeModal() {
       this.modalIsOpen = false
     }
   }
 }
 </script>
-

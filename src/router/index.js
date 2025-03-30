@@ -30,7 +30,8 @@ const routes = [
     {
         path: '/error',
         name: 'errorRoute',
-        component: ErrorView
+        component: ErrorView,
+        props: true
     },
     {
         path: '/register',
@@ -92,6 +93,16 @@ const routes = [
         name: 'gameScoreRoute',
         component: GameScoreView
     },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'notFound',
+        component: ErrorView,
+        props: {
+            errorTitle: 'Lehte ei leitud',
+            errorMessage: 'Vabandame, kuid otsitud lehte ei leitud.',
+            showHomeButton: true
+        }
+    }
 ]
 
 const router = createRouter({

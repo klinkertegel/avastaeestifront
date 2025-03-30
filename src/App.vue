@@ -1,93 +1,100 @@
 <template>
-  <LogOutModal :modal-is-open="modalIsOpen"
-               @event-close-modal="closeLogOutModal"
-               @event-execute-log-out="executeLogOut"
-  />
-  <nav v-if="isLoggedIn" class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand ms-4 mt-2"><h6>Avasta Eestimaad</h6></a>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <ErrorBoundary>
+    <LogOutModal :modal-is-open="modalIsOpen"
+                @event-close-modal="closeLogOutModal"
+                @event-execute-log-out="executeLogOut"
+    />
+    <nav v-if="isLoggedIn" class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-4 mt-2"><h6>Avasta Eestimaad</h6></a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-        <div class="navbar-nav">
-          <template v-if="isUser">
-            <router-link class="nav-link active ms-4 mt-1" aria-current="page" to="/home">
-              <font-awesome-icon :icon="['fas', 'house']"size="2x"/>
-            </router-link>
-          </template>
+          <div class="navbar-nav">
+            <template v-if="isUser">
+              <router-link class="nav-link active ms-4 mt-1" aria-current="page" to="/home">
+                <font-awesome-icon :icon="['fas', 'house']"size="2x"/>
+              </router-link>
+            </template>
 
-          <template v-else-if="isAdmin">
-            <router-link class="nav-link active ms-4 mt-1" aria-current="page" to="/home-admin">
-              <font-awesome-icon :icon="['fas', 'house']"size="2x"/>
-            </router-link>
-          </template>
+            <template v-else-if="isAdmin">
+              <router-link class="nav-link active ms-4 mt-1" aria-current="page" to="/home-admin">
+                <font-awesome-icon :icon="['fas', 'house']"size="2x"/>
+              </router-link>
+            </template>
 
 
-          <template v-if="isUser">
-            <router-link class="nav-link ms-4 d-flex" to="/game-new">
-              <font-awesome-icon :icon="['fas', 'plus']"size="2x" class=" mt-1"/>
-              <span class="mt-2 ms-1"> <h6>UUS MÄNG</h6> </span>
-            </router-link>
-          </template>
+            <template v-if="isUser">
+              <router-link class="nav-link ms-4 d-flex" to="/game-new">
+                <font-awesome-icon :icon="['fas', 'plus']"size="2x" class=" mt-1"/>
+                <span class="mt-2 ms-1"> <h6>UUS MÄNG</h6> </span>
+              </router-link>
+            </template>
 
-          <template v-if="isAdmin">
-            <router-link class="nav-link ms-4 d-flex" to="/location">
-              <font-awesome-icon :icon="['fas', 'plus']"size="2x" class=" mt-1"/>
-              <span class="mt-2 ms-1"> <h6>UUS KOHT</h6> </span>
-            </router-link>
-          </template>
+            <template v-if="isAdmin">
+              <router-link class="nav-link ms-4 d-flex" to="/location">
+                <font-awesome-icon :icon="['fas', 'plus']"size="2x" class=" mt-1"/>
+                <span class="mt-2 ms-1"> <h6>UUS KOHT</h6> </span>
+              </router-link>
+            </template>
 
-          <template v-if="isUser">
-            <router-link class="nav-link ms-5 mt-2" to="/games"><h6>KÕIK MÄNGUD</h6></router-link>
-          </template>
+            <template v-if="isUser">
+              <router-link class="nav-link ms-5 mt-2" to="/games"><h6>KÕIK MÄNGUD</h6></router-link>
+            </template>
 
-          <template v-if="isAdmin">
-            <router-link class="nav-link ms-4 mt-2" to="/games"><h6>KÕIK MÄNGUD</h6></router-link>
-          </template>
-        </div>
+            <template v-if="isAdmin">
+              <router-link class="nav-link ms-4 mt-2" to="/games"><h6>KÕIK MÄNGUD</h6></router-link>
+            </template>
+          </div>
 
-        <div class="navbar-nav ms-auto">
-          <template v-if="isUser">
-            <router-link class="nav-link" to="/favourites">
-              <font-awesome-icon :icon="['far', 'star']" size="2x"/>
-            </router-link>
-          </template>
+          <div class="navbar-nav ms-auto">
+            <template v-if="isUser">
+              <router-link class="nav-link" to="/favourites">
+                <font-awesome-icon :icon="['far', 'star']" size="2x"/>
+              </router-link>
+            </template>
 
-          <template v-if="isUser">
-            <router-link class="nav-link ms-3" to="/profile">
-              <font-awesome-icon :icon="['far', 'circle-user']"size="2x"/>
-            </router-link>
-          </template>
+            <template v-if="isUser">
+              <router-link class="nav-link ms-3" to="/profile">
+                <font-awesome-icon :icon="['far', 'circle-user']"size="2x"/>
+              </router-link>
+            </template>
 
-          <template v-else-if="isAdmin">
-            <router-link class="nav-link ms-3" to="/profile">
-              <font-awesome-icon :icon="['far', 'circle-user']"size="2x"/>
-            </router-link>
-          </template>
+            <template v-else-if="isAdmin">
+              <router-link class="nav-link ms-3" to="/profile">
+                <font-awesome-icon :icon="['far', 'circle-user']"size="2x"/>
+              </router-link>
+            </template>
 
-          <template v-if="isUser">
-            <button @click="openLogOutModal" type="button" class="btn btn-success ms-5 me-4">Logi välja</button>
-          </template>
-          <template v-else-if="isLoggedIn">
-            <button @click="openLogOutModal" type="button" class="btn btn-success ms-5 me-4">Logi välja</button>
-          </template>
-          <template v-else>
-            <router-link to="/"></router-link>
-          </template>
+            <template v-if="isUser">
+              <button @click="openLogOutModal" type="button" class="btn btn-success ms-5 me-4">Logi välja</button>
+            </template>
+            <template v-else-if="isLoggedIn">
+              <button @click="openLogOutModal" type="button" class="btn btn-success ms-5 me-4">Logi välja</button>
+            </template>
+            <template v-else>
+              <router-link to="/"></router-link>
+            </template>
 
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-  <router-view @event-update-nav-menu="updateNavMenu"/>
+    </nav>
+    <router-view @event-update-nav-menu="updateNavMenu"/>
+  </ErrorBoundary>
 </template>
 <script>
-
+import { ref } from 'vue'
 import LogOutModal from "@/components/modal/LogOutModal.vue";
+import ErrorBoundary from "@/components/error/ErrorBoundary.vue";
 import NavigationService from "@/service/NavigationService";
 import '@/assets/css/global.css';
 
 export default {
-  components: {LogOutModal},
+  name: 'App',
+  components: {
+    LogOutModal,
+    ErrorBoundary
+  },
   data() {
     return {
       modalIsOpen: false,
