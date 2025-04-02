@@ -13,10 +13,12 @@
             <font-awesome-icon v-if="displayLeftArrow" @click="handlePreviousLocation" :icon="['fas', 'angle-left']" size="3x"/>
           </div>
 
-
-
-          <div class="col-8 image-container">
+          <div class="col-8 image-container position-relative">
             <LocationImage :image-data="location.imageData"/>
+            <div class="remove-button" @click="removeFavorite" title="Eemalda lemmikutest">
+              <font-awesome-icon :icon="['fas', 'circle-xmark']" size="lg" />
+              <span class="tooltip-text">Eemalda lemmikutest</span>
+            </div>
           </div>
           <div class="col d-flex align-items-center justify-content-center">
             <font-awesome-icon v-if="displayRightArrow" @click="handleNextLocation" :icon="['fas', 'angle-right']" size="3x"/>
@@ -101,35 +103,24 @@ export default {
       this.getLocation(selectedLocationId)
     },
 
-
-
     updateDisplayArrows() {
-      this.displayLeftArrow = true
-      this.displayRightArrow = true
-
-      if (this.selectedIndex === 1) {
-        this.displayLeftArrow = false
-      }
-      if ( this.selectedIndex === this.userFavourites.length) {
-        this.displayRightArrow = false
-      }
-
+      this.displayLeftArrow = this.selectedIndex > 1;
+      this.displayRightArrow = this.selectedIndex < this.userFavourites.length;
     },
 
     getUserFavourites() {
       FavouriteService.sendGetUserFavouritesRequest(this.userId)
-          .then(response => this.handleGetUserFavouritesResponse(response))
+          .then(this.handleGetUserFavouritesResponse)
     },
 
     updateLocation(index, locationId) {
-      this.selectedIndex = index
+      this.selectedIndex = index + 1
       this.getLocation(locationId)
     },
 
-
-    getLocation(locationId){
+    getLocation(locationId) {
       LocationService.sendGetLocationRequest(locationId)
-          .then(response => this.handleGetLocationResponse(response))
+          .then(this.handleGetLocationResponse)
     },
 
     handleGetLocationResponse(response) {
@@ -138,26 +129,42 @@ export default {
     },
 
     handleGetUserFavouritesResponse(response) {
-      this.userFavourites = response.data
-      this.userHasAtLeastOneFavourite = this.userFavourites.length > 0
-
-      if (this.userHasAtLeastOneFavourite) {
-        this.getLocation(this.userFavourites[0].locationId);
+      if (response.data.length === 0) {
+        this.userHasAtLeastOneFavourite = false
+      } else {
+        this.userFavourites = response.data
+        this.getLocation(this.userFavourites[0].locationId)
       }
-
     },
 
-
+    removeFavorite() {
+      const currentLocationId = this.location.locationId;
+      FavouriteService.sendDeleteUserFavoriteRequest(currentLocationId)
+          .then(() => {
+            // Remove the location from userFavourites array
+            this.userFavourites = this.userFavourites.filter(fav => fav.locationId !== currentLocationId);
+            
+            if (this.userFavourites.length === 0) {
+              this.userHasAtLeastOneFavourite = false;
+            } else {
+              // If we're removing the last item in the list, go to previous
+              if (this.selectedIndex > this.userFavourites.length) {
+                this.selectedIndex--;
+              }
+              // Update the display with the next/previous location
+              const newLocationId = this.userFavourites[Math.min(this.selectedIndex - 1, this.userFavourites.length - 1)].locationId;
+              this.getLocation(newLocationId);
+            }
+          })
+          .catch(error => {
+            console.error('Error removing favorite:', error);
+          });
+    }
   },
+
   beforeMount() {
-    this.getUserFavourites();
+    this.getUserFavourites()
   }
 }
 
-
-
 </script>
-
-<style>
-
-</style>

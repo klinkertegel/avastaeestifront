@@ -1,9 +1,50 @@
 .lemmikkohad {
-
-
 }
 
 .h1 {
+}
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
 
+.remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+  cursor: pointer;
+  color: #6c757d;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.remove-button .tooltip-text {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.remove-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.remove-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

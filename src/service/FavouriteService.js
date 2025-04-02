@@ -18,4 +18,12 @@ export default {
             }
         );
     },
+
+    sendDeleteUserFavoriteRequest(favoriteId) {
+        return axios.delete('/remove-favorites', {
+            params: {
+                favoriteId: favoriteId
+            }
+        });
+    },
 };
